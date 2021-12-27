@@ -4,7 +4,6 @@
 
     <!-- <router-link to="/">Home</router-link> | -->
   </div>
-  <router-view/>
 </template>
 <script>
 import navBar from '@/components/shared/navBar'
@@ -22,10 +21,11 @@ html, body{
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #000
+  background-color: #f7f7f7;
+  overflow: hidden;
 
 }
-#app,nav{
+#app,#nav{
   height: 100%;
 }
 // #nav{

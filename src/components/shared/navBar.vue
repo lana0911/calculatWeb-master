@@ -1,87 +1,78 @@
-<template lang="pug">
-#navBar
-  span  TSET
-  el-icon.i-switch
-  el-icon       
-    info()
-  span.icon-home
-  .navBarBlock 
-    el-radio-group(v-model="isCollapse" style='margin-bottom: 20px')
-      el-radio-button(:label='false') expand
-      el-radio-button(:label='true') collapse
-    el-menu.el-menu-vertical-demo(
-      default-active='1' 
-      :collapse='isCollapse' 
-      @open='handleOpen' 
-      @close='handleClose'
-    )
-      el-sub-menu(index='1')
-        template(#title)
-          i.icon-calculator
-          span &ensp;活動
-        el-menu-item-group
-          template(#title)
-            span Group One
-          el-menu-item(index='1-1') item one
-          el-menu-item(index='1-2') item two
-        el-menu-item-group(title='Group Two')
-          el-menu-item(index='1-3') item three
-        el-sub-menu(index='1-4')
-          template(#title)
-            span item four
-          el-menu-item(index='1-4-1') item one
 
+<template >
+<div class="wrap">
+  <div class="navBar">
+    <el-menu
+      active-text-color="#ffd04b"
+      background-color="#545c64"
+      class="el-menu-vertical-demo"
+      default-active="/activity"
+      text-color="#fff"
+      @open="handleOpen"
+      @close="handleClose"
+      router
+    >
+      <el-menu-item  index="/activity">
+        <template #title>
+          <div class="title">
+            <i class="icon-books"></i>
+            <div class="t-word">活動</div>
+          </div>
+        </template>
+      </el-menu-item >
+      <el-menu-item index="/document">
+        <div class="title">
+          <i class="icon-file-word"></i>
+          <div class="t-word">檔案管理</div>
+        </div>
+      </el-menu-item>
+      <el-menu-item index="/lovedoc">
+        <div class="title">
+          <i class="icon-heart"></i>
+          <div class="t-word">我的最愛</div>
+        </div>
+      </el-menu-item>
+      <el-menu-item index="3" >
+        <div class="title">
+          <i class="icon-man-woman"></i>
+          <div class="t-word">團隊</div>
+            
+        </div>  
+      </el-menu-item>
+      <el-menu-item index="4">
+        <div class="title">
+          <i class="icon-calculator"></i>
+          <div class="t-word">作業</div>
+        </div>
+      </el-menu-item>
+      <el-menu-item index="4">
+        <div class="title">
+          <i class="icon-phone"></i>
+          <div class="t-word">通話</div>
+        </div>
+      </el-menu-item>
 
-      el-sub-menu(index='2')
-        template(#title)
-          i.icon-heart
-          span &ensp;資料
-        el-menu-item-group
-          template(#title)
-            span Group One
-          el-menu-item(index='1-1') item one
-          el-menu-item(index='1-2') item two
-        el-menu-item-group(title='Group Two')
-          el-menu-item(index='1-3') item three
-        el-sub-menu(index='1-4')
-          template(#title)
-            span item four
-          el-menu-item(index='1-4-1') item one
+    </el-menu>
+  </div>
+  <div class="right">
+    <div class="header">
+      <div class="front" id="block">
+        <span>Deams</span>
+      </div>
+      <div class="middle" id="block">
+        <span>2</span>
+      </div>
+      <div class="tail" id="block">
+         <el-avatar class="ava" :size="50" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+          <i id="btn" class="icon-equalizer" ></i>
+      </div>
+    </div>
+    <div class="content">
+      <router-view/>
 
-          
-      el-sub-menu(index='3')
-        template(#title)
-          i.icon-coin-dollar
-          span &ensp;作業
-        el-menu-item-group
-          template(#title)
-            span Group One
-          el-menu-item(index='1-1') item one
-          el-menu-item(index='1-2') item two
-        el-menu-item-group(title='Group Two')
-          el-menu-item(index='1-3') item three
-        el-sub-menu(index='1-4')
-          template(#title)
-            span item four
-          el-menu-item(index='1-4-1') item one
-
-          
-      el-sub-menu(index='4')
-        template(#title)
-          i.icon-text-color
-          span &ensp;設定
-        el-menu-item-group
-          template(#title)
-            span Group One
-          el-menu-item(index='1-1') item one
-          el-menu-item(index='1-2') item two
-        el-menu-item-group(title='Group Two')
-          el-menu-item(index='1-3') item three
-        el-sub-menu(index='1-4')
-          template(#title)
-            span item four
-          el-menu-item(index='1-4-1') item one
-
+    </div>
+  </div>
+</div>
 </template>
 
 <script>
@@ -110,15 +101,85 @@ export default defineComponent({
 })
 </script>
 
-<style>
-#navBar{
-  height: 100%;
-}
-.navBarBlock{
-  height: 100%;
-}
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-  min-height: 400px;
-}
+<style lang="sass" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap')
+@import '@/assets/stylesheets/shared/_theme.sass'
+.navBar,.wrap
+  height: 100%
+  .title
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    i
+      font-size: x-large
+    .t-word
+      font-size: larger
+      padding: 0
+      line-height: initial
+.navBarBlock
+  height: 100%
+
+.el-menu-vertical-demo:not(.el-menu--collapse) 
+  width: 200px
+  min-height: 400px
+
+
+
+:deep(.el-menu-item)
+  display: flex
+  justify-content: center 
+  padding: 3rem 0
+
+.el-menu-vertical-demo
+  height: 100%
+
+
+
+
+/* header */ 
+
+.wrap
+  display: flex
+  width: 100%
+
+.right
+  height: 100%
+  width: 100%
+
+.content
+  width: 100%
+  height: 90%
+
+.header
+  width: 100.1%
+  height: 10%
+  background-color: #545c64
+  display: flex
+  position: relative
+  left: -1px
+  #block
+    width: 33.3%
+  .front
+    padding: 0 2rem
+    span
+      font-size: 8vmin
+      color: $stressColor
+      font-family: 'Road Rage', cursive
+  .tail
+    display: flex
+    justify-content: flex-end
+    .ava
+      align-self: center
+    #btn
+      align-self: center
+      font-size: 4vmin
+      color: $stressColor
+      margin: 0 1rem
+    #btn:hover
+      font-size: 4.2vmin
+      color: $stressColorLight
+      cursor: pointer
+
+
 </style>

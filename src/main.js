@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 // icomoon
 import '../src/assets/fonts/icomoon/style.css'
+import '../src/assets/stylesheets/style.sass'
 import '@element-plus/icons'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
