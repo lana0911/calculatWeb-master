@@ -106,6 +106,9 @@ export default defineComponent({
 @import '@/assets/stylesheets/shared/_theme.sass'
 .navBar,.wrap
   height: 100%
+.navBar
+  width: 180px
+    
   .title
     width: 100%
     display: flex
@@ -121,7 +124,7 @@ export default defineComponent({
   height: 100%
 
 .el-menu-vertical-demo:not(.el-menu--collapse) 
-  width: 200px
+  width: 100%
   min-height: 400px
 
 

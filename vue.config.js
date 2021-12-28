@@ -9,8 +9,8 @@
 // };
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
-      ? '/calculatWeb/' // test20200915 為 repo 名稱
+      ? '/calculatWeb-master/' // test20200915 為 repo 名稱
       : '/'
   }
   
-  
+
