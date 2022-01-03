@@ -2,13 +2,13 @@
   <div class="wrap">
     <el-table
       class="table"
+      :header-cell-style="tableHeaderCellStyle"
       :data="tableData"
       row-key="id"
       border
       lazy
       :load="load"
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
-      :header-cell-style="{ background: '#545c64', color: '#fff' }"
       @row-click="chose"
     >
       <el-table-column  label="分類" >
@@ -26,13 +26,14 @@
         </div>
       </div>
       <el-table
+        :header-cell-style="tableHeaderCellStyle"
+
         :data="
           tableData1.filter(
             (data) =>
               !search || data.name.toLowerCase().includes(search.toLowerCase())
           )
         "
-        :header-cell-style="{ background: '#545c64', color: '#fff' }"
       >
         <el-table-column label="檔案名稱" prop="name" >
           <template #default="scope">
@@ -95,7 +96,7 @@
 <script >
 import { defineComponent, ref } from 'vue';
 import uploader from '@/components/shared/uploader.vue'
-import { lover , tableData1} from '@/var'
+import { lover , tableData1, themeTable, baseVar} from '@/var'
 export default defineComponent({
   name: 'tableDoc',
   components:{uploader},
@@ -173,20 +174,31 @@ export default defineComponent({
       }
     }
 
+    const tableHeaderCellStyle = () =>{
+      var str = 'background-color:' + baseVar.value
+      var str2 = ';color: #fff'
+      return str + str2
+    }
+
     return {
       uri,
       chose, 
       dialogVisible,
       addLove,
       lover,
-      tableData1
+      tableData1,
+      themeTable,
+      tableHeaderCellStyle
     }
   }
 })
 </script>
 
 
-<style lang="sass" scoped>
+<style lang="sass">
+@import '@/assets/stylesheets/shared/_theme.sass'
+@import '@/assets/stylesheets/themes/_default.sass'
+
 .wrap
   display: flex
   height: 100%
@@ -196,9 +208,11 @@ export default defineComponent({
     height: 100%
     margin: 0 0.5rem
   .table
-    width: 20%
+    height: 70%
+    width: 15%
   .detail
-    width: 80%
+    width: 85%
+    height: 70%
     #star:hover
       cursor: pointer
 
@@ -213,8 +227,4 @@ export default defineComponent({
         display: flex
         justify-content: flex-end
         width: 50%
-:deep(.el-table)
-  thead
-    background-color: #545c64
-
 </style>

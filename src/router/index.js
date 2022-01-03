@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Activity from '@/pages/Activity.vue'
 import Document from '@/pages/Document.vue'
 import LoveDoc from '@/pages/LoveDoc.vue'
+import ThemesPicker from '@/components/Settings/ThemesPicker.vue'
 const routes = [
   {
     path: '/home',
@@ -23,6 +24,11 @@ const routes = [
     path: '/lovedoc',
     name: 'LoveDoc',
     component: LoveDoc
+  },
+  {
+    path: '/themespicker',
+    name: 'ThemesPicker',
+    component: ThemesPicker
   },
 
 ]

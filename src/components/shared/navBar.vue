@@ -3,50 +3,47 @@
 <div class="wrap">
   <div class="navBar">
     <el-menu
-      active-text-color="#ffd04b"
-      background-color="#545c64"
-      class="el-menu-vertical-demo"
+      :class="themeNav"
       default-active="/activity"
-      text-color="#fff"
       @open="handleOpen"
       @close="handleClose"
       router
     >
-      <el-menu-item  index="/activity">
+      <el-menu-item :class="themeNavItem" index="/activity">
         <template #title>
-          <div class="title">
+          <div :class="titleClass">
             <i class="icon-books"></i>
             <div class="t-word">活動</div>
           </div>
         </template>
       </el-menu-item >
-      <el-menu-item index="/document">
-        <div class="title">
+      <el-menu-item :class="themeNavItem" index="/document">
+        <div :class="titleClass">
           <i class="icon-file-word"></i>
           <div class="t-word">檔案管理</div>
         </div>
       </el-menu-item>
-      <el-menu-item index="/lovedoc">
-        <div class="title">
+      <el-menu-item :class="themeNavItem" index="/lovedoc">
+        <div :class="titleClass">
           <i class="icon-heart"></i>
           <div class="t-word">我的最愛</div>
         </div>
       </el-menu-item>
-      <el-menu-item index="3" >
-        <div class="title">
+      <el-menu-item :class="themeNavItem" index="/themespicker" >
+        <div :class="titleClass">
           <i class="icon-man-woman"></i>
           <div class="t-word">團隊</div>
             
         </div>  
       </el-menu-item>
-      <el-menu-item index="4">
-        <div class="title">
+      <el-menu-item :class="themeNavItem" index="4">
+        <div :class="titleClass">
           <i class="icon-calculator"></i>
           <div class="t-word">作業</div>
         </div>
       </el-menu-item>
-      <el-menu-item index="4">
-        <div class="title">
+      <el-menu-item :class="themeNavItem" index="5">
+        <div :class="titleClass">
           <i class="icon-phone"></i>
           <div class="t-word">通話</div>
         </div>
@@ -55,9 +52,9 @@
     </el-menu>
   </div>
   <div class="right">
-    <div class="header">
+    <div :class="wrapClass">
       <div class="front" id="block">
-        <span>Deams</span>
+        <span>Deams{{defaultwrap}}</span>
       </div>
       <div class="middle" id="block">
         <span>2</span>
@@ -78,6 +75,7 @@
 <script>
 import { defineComponent, ref } from 'vue'
 
+import {themeHead, themeNavItem, themeNav, wrapClass, titleClass} from '@/var'
 
 export default defineComponent({
   name: 'navBar',
@@ -92,10 +90,18 @@ export default defineComponent({
     const handleClose = (key, keyPath) => {
       console.log(key, keyPath)
     }
+
+
     return {
       isCollapse,
       handleOpen,
       handleClose,
+      themeNav,
+      themeNavItem,
+      themeHead,
+      wrapClass,
+      titleClass
+
     }
   },
 })
@@ -103,86 +109,11 @@ export default defineComponent({
 
 <style lang="sass" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap')
-@import '@/assets/stylesheets/shared/_theme.sass'
-.navBar,.wrap
-  height: 100%
-.navBar
-  width: 180px
-    
-  .title
-    width: 100%
-    display: flex
-    flex-direction: column
-    align-items: center
-    i
-      font-size: x-large
-    .t-word
-      font-size: larger
-      padding: 0
-      line-height: initial
-.navBarBlock
-  height: 100%
-
-.el-menu-vertical-demo:not(.el-menu--collapse) 
-  width: 100%
-  min-height: 400px
-
-
-
-:deep(.el-menu-item)
-  display: flex
-  justify-content: center 
-  padding: 3rem 0
-
-.el-menu-vertical-demo
-  height: 100%
-
-
-
-
-/* header */ 
-
-.wrap
-  display: flex
-  width: 100%
-
-.right
-  height: 100%
-  width: 100%
-
-.content
-  width: 100%
-  height: 90%
-
-.header
-  width: 100.1%
-  height: 10%
-  background-color: #545c64
-  display: flex
-  position: relative
-  left: -1px
-  #block
-    width: 33.3%
-  .front
-    padding: 0 2rem
-    span
-      font-size: 8vmin
-      color: $stressColor
-      font-family: 'Road Rage', cursive
-  .tail
-    display: flex
-    justify-content: flex-end
-    .ava
-      align-self: center
-    #btn
-      align-self: center
-      font-size: 4vmin
-      color: $stressColor
-      margin: 0 1rem
-    #btn:hover
-      font-size: 4.2vmin
-      color: $stressColorLight
-      cursor: pointer
+// @import '@/assets/stylesheets/shared/_theme.sass'
+@import '@/assets/stylesheets/themes/_default.sass'
+@import '@/assets/stylesheets/themes/_tech.sass'
+@import '@/assets/stylesheets/themes/_light.sass'
+@import '@/assets/stylesheets/themes/_cute.sass'
 
 
 </style>

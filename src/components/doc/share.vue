@@ -53,6 +53,7 @@ export default defineComponent({
 
 
 <style lang="sass" scoped>
+@import '@/assets/stylesheets/shared/_theme.sass'
 #share
     display: flex
     height: 100%

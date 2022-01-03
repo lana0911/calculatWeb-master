@@ -1,0 +1,109 @@
+
+@import '@/assets/stylesheets/shared/_theme.sass'
+.navBar,.wrap
+  height: 100%
+  color: #000
+
+.navBar
+  width: 150px
+    
+  .techtitle
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    i
+      font-size: larger
+      color: #4aece8
+    .t-word
+      font-size: medium
+      padding: 0
+      line-height: initial
+      color: #4aece8
+.navBarBlock
+  height: 100%
+
+.techthemeNav:not(.el-menu--collapse) 
+  width: 100%
+  min-height: 400px
+  background-color: #0d2237
+  height: 100%
+
+
+.techthemeNavItem
+  color: $wFont
+  display: flex
+  justify-content: center 
+  padding: 3rem 0
+.techthemeNavItem:hover
+  background-color: #0b706f
+  color: #e84c3d
+.techthemeNavItem.is-active
+  background-color: #0d2237
+  color: #fff
+
+
+// :deep(.el-menu-item)
+//   display: flex
+//   justify-content: center 
+//   padding: 3rem 0
+// .el-menu-item:hover
+//   background-color: $baseColor
+//   color: #e84c3d
+// .el-menu-item.is-active
+//   background-color: $stressColor
+//   color: #fff
+
+.el-menu-vertical-demo
+  height: 100%
+
+
+
+
+/* header */ 
+
+.wrap
+  display: flex
+  width: 100%
+
+.right
+  height: 100%
+  width: 100%
+
+.content
+  width: 100%
+  height: 90%
+
+.techwrap
+  width: 100.1%
+  height: 10%
+  background-color: #0d2237
+  display: flex
+  position: relative
+  left: -1px
+  #block
+    width: 33.3%
+  .front
+    padding: 0 2rem
+    span
+      font-size: 8vmin
+      color: #4aece8
+      font-family: 'Road Rage', cursive
+  .tail
+    display: flex
+    justify-content: flex-end
+    .ava
+      align-self: center
+    #btn
+      align-self: center
+      font-size: 4vmin
+      color: #4aece8
+      margin: 0 1rem
+    #btn:hover
+      font-size: 4.2vmin
+      color: $stressColorLight
+      cursor: pointer
+
+
+  
+

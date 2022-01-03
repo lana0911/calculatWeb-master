@@ -2,11 +2,11 @@
   <div class="wrap">
     <el-table
       class="table"
+      :header-cell-style="tableHeaderCellStyle"
       :data="tableData"
       row-key="id"
       border
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
-      :header-cell-style="{ background: '#545c64', color: '#fff' }"
       @row-click="chose"
     >
       <el-table-column  label="分類" >
@@ -21,17 +21,17 @@
       <div class="d-head">
         <div class="title">📚 目前資料夾 : {{uri}}</div>
         <div class="btn">
-          <el-button type="warning" @click="dialogVisible = true">+ 上傳</el-button>
+          <!-- <el-button type="warning" @click="dialogVisible = true">+ 上傳</el-button> -->
         </div>
       </div>
       <el-table
+        :header-cell-style="tableHeaderCellStyle"
         :data="
-          tableData1.filter(
+          tableData2.filter(
             (data) =>
               !search || data.toLowerCase().includes(search.toLowerCase())
           )
         "
-        :header-cell-style="{ background: '#545c64', color: '#fff' }"
       >
         <el-table-column label="檔案名稱" prop="name" >
           <template #default="scope">
@@ -44,32 +44,34 @@
         <el-table-column label="大小" prop="size" width="120px"/>
         <el-table-column label="上傳者" prop="owner" width="120px"/>
         <el-table-column label="備註" prop="info" width="200px"/>
-        <el-table-column label="日期" prop="date" width="120px"/>
+        <el-table-column label="日期" prop="date" width="90px"/>
         <el-table-column align="right">
           <template #header>
             <el-input v-model="search" size="mini" placeholder="Type to search" />
           </template>
           <template #default="scope">
+            <el-tag class="ml-2"  type="info" effect="dark" v-if="scope.row.hand">已繳交</el-tag>
+            <el-tag class="ml-2" type="warning" effect="dark" v-else>未繳交</el-tag>
             <el-button size="mini"
               type="primary"
               @click="handleEdit(scope.$index, scope.row)"
               plain
-              >預覽</el-button
+              >範例</el-button
             >
             <el-button
               size="mini"
               type="success"
               plain
-              @click="handleDelete(scope.$index, scope.row)"
-              >下載</el-button
+              @click="dialogVisible = true"
+              >+上傳</el-button
             >
-            <el-button
+            <!-- <el-button
               size="mini"
               type="danger"
               plain
               @click="handleDelete(scope.$index, scope.row)"
               >刪除</el-button
-            >
+            > -->
           </template>
         </el-table-column>
       </el-table>
@@ -95,7 +97,7 @@
 <script >
 import { defineComponent, ref } from 'vue';
 import uploader from '@/components/shared/uploader.vue'
-import { lover , tableData1} from '@/var'
+import { lover , tableData2, baseVar} from '@/var'
 export default defineComponent({
   name: 'tableDoc2',
   components:{uploader},
@@ -178,13 +180,34 @@ export default defineComponent({
       uri.value = row.name
     }
     const dialogVisible = ref(false)
+    const tableHeaderCellStyle = () =>{
+      var str = 'background-color:' + baseVar.value
+      var str2 = ';color: #fff'
+      return str + str2
+    }
+
+    const addLove = (item) =>{
+      item.star = !item.star
+      var obj = item
+      obj.parent = uri.value
+      if(item.star)
+        lover.value.push(obj)
+      else{
+        const index = lover.value.indexOf(obj);
+        if (index > -1) {
+          lover.value.splice(index, 1);
+        }
+      }
+    }
 
     return {
       uri,
       chose,
       dialogVisible,
       lover,
-      tableData1
+      tableData2,
+      tableHeaderCellStyle,
+      addLove
     }
   }
 })
@@ -192,20 +215,35 @@ export default defineComponent({
 
 
 <style lang="sass" scoped>
+@import '@/assets/stylesheets/shared/_theme.sass'
 .wrap
   display: flex
   height: 100%
   width: 100%
 
+
   .table, .detail
     height: 100%
     margin: 0 0.5rem
   .table
-    width: 20%
-    height: 80vh
+    height: 70%
+    width: 15%
+
+
+  .table, .detail
+    height: 100%
+    margin: 0 0.5rem
+  .table
+    height: 70%
+    width: 15%
+    // width: 20%
+    // height: 80vh
     overflow: auto
   .detail
-    width: 80%
+    width: 85%
+    height: 70%
+    // height: 70%
+    // width: 80%
     .d-head
       margin-bottom: 0.5rem
       display: flex
@@ -217,8 +255,9 @@ export default defineComponent({
         display: flex
         justify-content: flex-end
         width: 50%
-:deep(.el-table)
-  thead
-    background-color: #545c64
-
+  .defaultthemeTable
+    background-color: #0b2f45ea
+    
+:deep(.el-tag)
+  margin: 0 .5rem
 </style>

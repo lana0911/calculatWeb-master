@@ -6,7 +6,7 @@
   )
     el-tab-pane(label="我的檔案" name="first") 
       my()
-    el-tab-pane(label="共享資源" name="sec") 
+    el-tab-pane(label="作業繳交" name="sec") 
       share()
 </template>
 

@@ -8,7 +8,7 @@
           !search || data.name.toLowerCase().includes(search.toLowerCase())
       )
     "
-    :header-cell-style="{ background: '#545c64', color: '#fff' }"
+    :header-cell-style="{ background: '#0b2f45ea', color: '#fff' }"
   >
     <el-table-column label="檔案名稱" prop="name" />
     <el-table-column label="檔案格式" prop="format" />
