@@ -49,7 +49,9 @@ html, body
 .techhtml
   width: 100%
   background-color: #eff5fc
-
+body
+  :deep(.el-notification)
+    height: 12%
 </style>
 
 

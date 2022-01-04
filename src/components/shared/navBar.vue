@@ -4,12 +4,12 @@
   <div class="navBar">
     <el-menu
       :class="themeNav"
-      default-active="/activity"
+      default-active="/"
       @open="handleOpen"
       @close="handleClose"
       router
     >
-      <el-menu-item :class="themeNavItem" index="/activity">
+      <el-menu-item :class="themeNavItem" index="/">
         <template #title>
           <div :class="titleClass">
             <i class="icon-books"></i>

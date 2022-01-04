@@ -101,8 +101,8 @@ export default defineComponent({
 // .enter:active, .enter:focus
 //   box-shadow: inset 1px -1px 1px 1px #1c1c1c, inset 0px 1px 1px 1px #949191
 :deep(.el-card)
-  width: 15rem
-  height: 16rem
+  width: 17rem
+  height: 16.5rem
   margin: .2rem .5rem
 .item 
   margin-right: 1px

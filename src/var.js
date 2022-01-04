@@ -80,7 +80,7 @@ export const tableData2 = [
     date: '2021-2-9',
     star: false,
     info:'可參考講義103-110頁',
-    owner: '李大維',
+    owner: '林裕翔',
     hand: false
   },
   {
@@ -102,7 +102,7 @@ export const tableData2 = [
     date: '2021-12-5',
     star: false,
     info:'不同對象聊天集以不名區隔，intent為關鍵字，word為回覆相關內容，可適用json讀取。',
-    owner: '蘇義芳',
+    owner: '駱正彧',
     hand: false
   },
   {
@@ -113,7 +113,7 @@ export const tableData2 = [
     date: '2021-12-25',
     star: false,
     info:'',
-    owner: '張熙媛',
+    owner: '吳傳祥',
     hand: false
   },
   {
@@ -124,7 +124,7 @@ export const tableData2 = [
     date: '2021-5-5',
     star: false,
     info:'',
-    owner: '蔡文瑜',
+    owner: '陳泓銘',
     hand: true
   },
 ]

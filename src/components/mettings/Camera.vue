@@ -91,7 +91,7 @@
 </div>
 </template>
 <script>
-import { ElNotification } from 'element-plus'
+import { ElMessage  } from 'element-plus'
 import VuePictureSwipe from 'vue-picture-swipe';
 import {onBeforeUnmount} from 'vue'  
 export default {
@@ -201,7 +201,7 @@ export default {
     },
   setup() {
     const open1 = () => {
-      ElNotification({
+      ElMessage ({
         title: '✔ 高質量',
         message: '質量高，預期進行過程順暢',
         type: 'success',
@@ -209,7 +209,7 @@ export default {
     }
 
     const open2 = () => {
-      ElNotification({
+      ElMessage ({
         title: '✘ 中低質量',
         message: '將可能影響會議品質',
         type: 'warning',

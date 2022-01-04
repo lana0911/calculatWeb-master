@@ -37,8 +37,8 @@
       >
         <el-table-column label="檔案名稱" prop="name" >
           <template #default="scope">
-            <i id="star" style="color:#ffc100" class="icon-star-full" v-if="scope.row.star" @click="addLove(scope.row)"></i>
-            <i id="star" class="icon-star-empty" v-else @click="addLove(scope.row)"></i>
+            <i id="star" style="color:#ffc100;font-size:1.3rem" class="icon-star-full" v-if="scope.row.star" @click="addLove(scope.row)"></i>
+            <i id="star" style="font-size:1.3rem" class="icon-star-empty" v-else @click="addLove(scope.row)"></i>
             <span> &ensp;{{scope.row.name}}</span>
           </template>
         </el-table-column>

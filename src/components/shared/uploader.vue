@@ -18,6 +18,12 @@
         .el-upload__tip
             jpg/png files with a size less than 500kb
 
+    .drive
+      i.icon-google-drive(style="color: orange;font-size: 5vmin")
+      i.icon-onedrive(style="color: blue;font-size: 5vmin")
+      i.icon-dropbox(style="color: #42dbb8;font-size: 5vmin")
+      i.icon-libreoffice(style="color: #000;font-size: 5vmin")
+
 </template>
 
 <script>
@@ -52,5 +58,13 @@ export default {
         font-size: 10vmin
     .ico
         margin: 1rem 0
+    .drive
+        font-size: 5vmin
+        display: flex
+        justify-content: space-evenly
+        margin: 1rem 0
+    .drive:hover
+      cursor: pointer
+
 </style>
 
