@@ -49,10 +49,10 @@
           <template #header>
             <el-input v-model="search" size="mini" placeholder="Type to search" />
           </template>
-          <template #default="scope">
+          <template #default>
             <el-button size="mini"
               type="primary"
-              @click="handleEdit(scope.$index, scope.row)"
+              @click="videoVisible = true"
               plain
               >預覽</el-button
             >
@@ -60,16 +60,18 @@
               size="mini"
               type="success"
               plain
-              @click="handleDelete(scope.$index, scope.row)"
               >下載</el-button
             >
-            <el-button
-              size="mini"
-              type="danger"
-              plain
-              @click="handleDelete(scope.$index, scope.row)"
-              >刪除</el-button
-            >
+            <el-popconfirm title="確定刪除嗎?">
+              <template #reference>
+                <el-button
+                  size="mini"
+                  type="danger"
+                  plain
+                  > Delete
+                </el-button>
+              </template>
+            </el-popconfirm>
           </template>
         </el-table-column>
       </el-table>
@@ -91,6 +93,19 @@
       </template>
     </el-dialog>
 
+    <el-dialog
+      v-model="videoVisible"
+      title="預覽"
+      width="50%"
+      :before-close="handleClose"
+    >
+      <iframe src="https://drive.google.com/file/d/15gizIvB96F_4xWC1l8ARfWp1YGuzOdJ4/preview" width="640" height="480" allow="autoplay"></iframe>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="videoVisible = false">Close</el-button>
+        </span>
+      </template>
+    </el-dialog>
   </div>
 </template>
 <script >
@@ -159,6 +174,7 @@ export default defineComponent({
       uri.value = row.name
     }
     const dialogVisible = ref(false)
+    const videoVisible = ref(false)
 
     const addLove = (item) =>{
       item.star = !item.star
@@ -180,15 +196,21 @@ export default defineComponent({
       return str + str2
     }
 
+    const viewVideo = () =>{
+
+    }
+
     return {
       uri,
       chose, 
       dialogVisible,
+      videoVisible,
       addLove,
       lover,
       tableData1,
       themeTable,
-      tableHeaderCellStyle
+      tableHeaderCellStyle,
+      viewVideo
     }
   }
 })

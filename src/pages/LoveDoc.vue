@@ -33,13 +33,16 @@
           @click="handleDelete(scope.$index, scope.row)"
           >下載</el-button
         >
-        <el-button
-          size="mini"
-          type="danger"
-          plain
-          @click="handleDelete(scope.$index, scope.row)"
-          >刪除</el-button
-        >
+        <el-popconfirm title="Are you sure to delete this?">
+          <template #reference>
+            <el-button
+              size="mini"
+              type="danger"
+              plain
+              @click="handleDelete(scope.$index, scope.row)"> Delete
+            </el-button>
+          </template>
+        </el-popconfirm>
       </template>
     </el-table-column>
   </el-table>

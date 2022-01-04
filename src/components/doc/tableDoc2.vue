@@ -54,8 +54,8 @@
             <el-tag class="ml-2" type="warning" effect="dark" v-else>未繳交</el-tag>
             <el-button size="mini"
               type="primary"
-              @click="handleEdit(scope.$index, scope.row)"
               plain
+              @click="videoVisible = true"
               >範例</el-button
             >
             <el-button
@@ -89,6 +89,20 @@
           <el-button type="primary" @click="dialogVisible = false"
             >Confirm</el-button
           >
+        </span>
+      </template>
+    </el-dialog>
+
+    <el-dialog
+      v-model="videoVisible"
+      title="預覽"
+      width="60%"
+      :before-close="handleClose"
+    >
+      <iframe style="width:100vh; height:50vh;" src="https://www.youtube.com/embed/XN031PuViqI?list=PL2SrkGHjnWcyWbA4MGSeTQVNiFHt1YbjC" frameborder="0" allowfullscreen></iframe>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="videoVisible = false">Close</el-button>
         </span>
       </template>
     </el-dialog>
@@ -174,6 +188,7 @@ export default defineComponent({
     
   },
   setup() {
+    const videoVisible = ref(false)
     const uri = ref('通識課')
     const chose = (row, column, event) =>{
       console.log(row, column, event)
@@ -207,7 +222,8 @@ export default defineComponent({
       lover,
       tableData2,
       tableHeaderCellStyle,
-      addLove
+      addLove,
+      videoVisible
     }
   }
 })
@@ -260,4 +276,10 @@ export default defineComponent({
     
 :deep(.el-tag)
   margin: 0 .5rem
+
+  
+:deep(.el-dialog)
+    display: flex
+    flex-direction: column
+    justify-content: center
 </style>
